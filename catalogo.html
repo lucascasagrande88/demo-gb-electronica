@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Catálogo y lista de precios — GB Ingeniería Electrónica</title>
+<meta name="description" content="Lista de precios de componentes eléctricos y electrónicos. Demo por Chimichurri.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=1">
+<link rel="stylesheet" href="tour.css?v=1">
+</head>
+<body>
+
+<!-- RIBBON DEMO -->
+<div class="demobar">
+  <div class="wrap">
+    <b>🎬 Demo interactivo</b>
+    <span class="chip">GB Ingeniería Electrónica</span>
+    <span style="opacity:.85">Catálogo online / lista de precios — se arma solo con el panel.</span>
+    <div class="db-actions">
+      <button type="button" class="db-tour" id="startTour">▶ Ver tutorial guiado</button>
+      <a href="admin.html" id="panelLink">🔐 Entrar al panel (CRM) ↗</a>
+    </div>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header class="header" id="header">
+  <nav class="nav">
+    <a href="index.html" class="brand">
+      <svg class="logo" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect x="3" y="3" width="42" height="42" rx="11" fill="#d92d2d"/>
+        <circle cx="11" cy="11" r="1.7" fill="#fff" opacity=".85"/><circle cx="37" cy="37" r="1.7" fill="#fff" opacity=".85"/>
+        <path d="M11 11h7M37 37h-7" stroke="#fff" stroke-opacity=".7" stroke-width="1.6" stroke-linecap="round"/>
+        <text x="24" y="31" text-anchor="middle" font-family="Inter,system-ui,sans-serif" font-weight="800" font-size="20" fill="#fff">GB</text>
+      </svg>
+      <span>GB Ingeniería Electrónica<small>Componentes · Rosario · Mayorista y minorista</small></span>
+    </a>
+    <div class="menu">
+      <a href="index.html#inicio">Inicio</a>
+      <a href="index.html#categorias">Rubros</a>
+      <a href="catalogo.html" class="active">Catálogo</a>
+      <a href="index.html#nosotros">Nosotros</a>
+      <a href="index.html#contacto">Contacto</a>
+    </div>
+    <div class="nav-tools">
+      <button class="icon-btn" id="cartBtn" aria-label="Cotización">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1.6"/><circle cx="18" cy="21" r="1.6"/><path d="M2 3h3l2.4 12.3a2 2 0 0 0 2 1.7h8.2a2 2 0 0 0 2-1.6L23 7H6"/></svg>
+        <span class="cart-count" id="cartCount" style="display:none">0</span>
+      </button>
+      <a href="#" class="btn btn-green btn-sm js-wa" data-wa="¡Hola GB! Quiero pedir una cotización."><svg class="wa-ico" viewBox="0 0 32 32" fill="currentColor"><path d="M16 3C9.4 3 4 8.4 4 15c0 2.4.7 4.6 1.9 6.5L4 29l7.7-1.8c1.8 1 3.9 1.6 6.1 1.6h.2c6.6 0 12-5.4 12-12S22.6 3 16 3zm0 21.8c-1.9 0-3.7-.5-5.3-1.5l-.4-.2-4 .9.9-3.9-.3-.4A9.8 9.8 0 0 1 6.2 15C6.2 9.6 10.6 5.2 16 5.2S25.8 9.6 25.8 15 21.4 24.8 16 24.8z"/></svg>Cotizar por WhatsApp</a>
+      <button class="icon-btn hamb" id="hambBtn" aria-label="Menú">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </nav>
+</header>
+
+<!-- Mobile drawer -->
+<div class="drawer" id="drawer">
+  <div class="scrim" data-close></div>
+  <div class="panel">
+    <button class="close" data-close aria-label="Cerrar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    <a href="index.html#inicio" data-close>Inicio</a>
+    <a href="index.html#categorias" data-close>Rubros</a>
+    <a href="catalogo.html" data-close>Catálogo</a>
+    <a href="index.html#nosotros" data-close>Nosotros</a>
+    <a href="index.html#contacto" data-close>Contacto</a>
+    <a href="admin.html" data-close>🔐 Panel (CRM)</a>
+    <a href="#" class="btn btn-green js-wa" data-wa="¡Hola GB! Quiero pedir una cotización." style="margin-top:10px">Cotizar por WhatsApp</a>
+  </div>
+</div>
+
+<!-- Cart drawer -->
+<div class="drawer cart-drawer" id="cartDrawer">
+  <div class="scrim" data-close></div>
+  <div class="panel">
+    <div class="cart-head">
+      <h3>Tu cotización</h3>
+      <button class="close" data-close aria-label="Cerrar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    </div>
+    <div class="cart-items" id="cartItems"></div>
+    <div class="cart-empty" id="cartEmpty">
+      <div style="font-size:56px">🧾</div>
+      <p>Tu cotización está vacía.<br>Sumá productos de la lista.</p>
+    </div>
+    <div class="cart-foot" id="cartFoot" style="display:none">
+      <div class="cart-total"><span>Total estimado</span><b id="cartTotal">$0</b></div>
+      <button type="button" class="btn btn-green btn-lg" id="checkoutBtn">Pedir cotización por WhatsApp</button>
+      <button type="button" class="cart-clear" id="clearCartBtn">Vaciar</button>
+      <p class="cart-note" id="minNote"></p>
+    </div>
+  </div>
+</div>
+
+<!-- HERO LISTA -->
+<section class="lista-hero">
+  <div class="wrap">
+    <div>
+      <span class="kicker">Catálogo online</span>
+      <h1>Catálogo y lista de precios</h1>
+      <p>Todos nuestros componentes y productos, ordenados por rubro y siempre actualizados. Armá tu cotización y cerrala por WhatsApp.</p>
+    </div>
+    <button class="print-btn" id="printBtn" type="button"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V3h12v6M6 18H4a2 2 0 0 1-2-2v-4a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="7"/></svg>Imprimir / PDF</button>
+  </div>
+</section>
+
+<!-- TOOLBAR STICKY -->
+<div class="lista-toolbar">
+  <div class="wrap">
+    <label class="shop-search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.2-3.2"/></svg><input type="search" id="listaSearch" placeholder="Buscar producto…" autocomplete="off"></label>
+    <select id="catSelect" aria-label="Rubro"></select>
+    <select id="listaSort" aria-label="Ordenar">
+      <option value="az">Nombre A–Z</option>
+      <option value="price-asc">Precio: menor a mayor</option>
+      <option value="price-desc">Precio: mayor a menor</option>
+    </select>
+  </div>
+</div>
+
+<section class="band tight" style="padding-top:22px">
+  <div class="wrap">
+    <div class="lista-banner">
+      <span class="lb-ic"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg></span>
+      <div><b>Lista de precios — <span class="js-fecha"></span>.</b> Precios de referencia; consultá disponibilidad y precio mayorista. Envíos a todo el país.</div>
+    </div>
+    <div class="lista-count" id="listaCount"></div>
+    <div id="listaHost"></div>
+  </div>
+</section>
+
+<!-- CTA WhatsApp -->
+<section class="band tight" style="padding-top:0">
+  <div class="wrap">
+    <div class="contact-cta">
+      <div class="lt"><span class="wa-big"><svg viewBox="0 0 32 32" fill="#fff"><path d="M16 3C9.4 3 4 8.4 4 15c0 2.4.7 4.6 1.9 6.5L4 29l7.7-1.8c1.8 1 3.9 1.6 6.1 1.6h.2c6.6 0 12-5.4 12-12S22.6 3 16 3z"/></svg></span><div><h3>¿Armamos tu cotización?</h3><p>Escribinos y coordinamos stock, precio y envío.</p></div></div>
+      <a href="#" class="btn btn-white btn-lg js-wa" data-wa="¡Hola GB! Quiero cotizar productos del catálogo.">Pedir por WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a href="index.html" class="brand"><svg class="logo" viewBox="0 0 48 48" aria-hidden="true"><rect x="3" y="3" width="42" height="42" rx="11" fill="#d92d2d"/><circle cx="11" cy="11" r="1.7" fill="#fff" opacity=".85"/><circle cx="37" cy="37" r="1.7" fill="#fff" opacity=".85"/><path d="M11 11h7M37 37h-7" stroke="#fff" stroke-opacity=".7" stroke-width="1.6" stroke-linecap="round"/><text x="24" y="31" text-anchor="middle" font-family="Inter,system-ui,sans-serif" font-weight="800" font-size="20" fill="#fff">GB</text></svg><span style="color:#fff">GB Ingeniería Electrónica</span></a>
+        <p>Importadores mayoristas y minoristas de componentes eléctricos y electrónicos. Envíos a todo el país. ⚡🔌💡</p>
+      </div>
+      <div class="foot-col">
+        <h5>Catálogo</h5>
+        <a href="catalogo.html">Lista de precios</a><a href="index.html#productos">Comprar online</a><a href="admin.html">Panel (CRM)</a>
+      </div>
+      <div class="foot-col">
+        <h5>GB</h5>
+        <a href="index.html#servicios">Cómo trabajamos</a><a href="index.html#nosotros">Nosotros</a><a href="index.html#contacto">Contacto</a>
+      </div>
+      <div class="foot-col">
+        <h5>Seguinos</h5>
+        <div class="socials">
+          <a href="https://instagram.com/gbingenieriaelectronica" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <p>© 2026 GB Ingeniería Electrónica · Demo. Productos y precios de ejemplo.</p>
+      <p class="made-by">Hecho con <span class="heart">♥</span> por <a href="https://www.chimichurridiseno.com" target="_blank" rel="noopener">Chimichurri</a></p>
+    </div>
+  </div>
+</footer>
+
+<a href="#" class="fab js-wa" data-wa="¡Hola GB! Quiero pedir una cotización." aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.71.306 1.263.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.29.173-1.414-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+
+<div class="toast" id="toast"><span class="tk"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7 9 18l-5-5"/></svg></span><b id="toastMsg">Agregado a la cotización</b></div>
+
+<script src="config.js?v=1"></script>
+<script src="products-data.js?v=1"></script>
+<script src="store.js?v=1"></script>
+<script src="tour.js?v=1"></script>
+<script src="catalog.js?v=1"></script>
+</body>
+</html>

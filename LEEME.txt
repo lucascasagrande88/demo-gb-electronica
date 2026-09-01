@@ -1,0 +1,57 @@
+========================================================================
+  DEMO WEB — "GB Ingeniería Electrónica"
+  Componentes eléctricos y electrónicos · Rosario
+  Hecho por Chimichurri · para mostrar al cliente
+========================================================================
+
+QUÉ ES
+------
+Demo 100% funcional con TRES piezas que el cliente puede probar en vivo:
+
+  1) LA WEB  ............ index.html
+     Sitio público: hero, rubros, productos con carrito y cierre de
+     cotización por WhatsApp. Incluye TUTORIAL GUIADO (popups paso a paso)
+     que arranca solo la primera vez y se reabre con "¿Cómo funciona?".
+
+  2) EL CATÁLOGO  ....... catalogo.html
+     Lista de precios online agrupada por rubro, con buscador, filtro por
+     rubro, orden por precio, fecha de lista y botón Imprimir/PDF.
+
+  3) EL PANEL / CRM  .... admin.html
+     Panel para cargar, editar y borrar productos, precios, presentaciones
+     y fotos, y activar/ocultar qué se ve. Clave del demo: demo1234.
+
+La web y el catálogo se arman SOLOS con los productos del panel: lo que
+editás en el CRM se refleja al instante en las dos.
+
+CÓMO GUARDA LOS DATOS
+---------------------
+Cada visitante tiene su propio catálogo, guardado en su navegador
+(localStorage). Ideal para un demo: cada uno prueba sin pisar a los demás
+y sin base de datos ni servidor. Para volver al catálogo de ejemplo:
+Panel → Ajustes → "Volver al catálogo de ejemplo".
+En producción real se conecta a una base online (ej. Supabase).
+
+PERSONALIZAR (todo genérico y editable)
+---------------------------------------
+  • config.js .......... marca, WhatsApp, email, dirección, horario y RUBROS.
+  • products-data.js ... catálogo de ejemplo (nombres, precios, presentación).
+  • styles.css ......... colores (rojo/grafito GB) y tipografías.
+
+Datos de contacto ya cargados (de gbelectronica.com):
+  GB Ingeniería Electrónica · Urquiza 1361, Rosario, Santa Fe
+  Tel 0341 440-5890 · WhatsApp +54 9 341 506-9038
+  gbingenieriaelectronica1361@gmail.com
+
+PUBLICAR
+--------
+Sitio estático (HTML/CSS/JS), sin build. Subí toda la carpeta a cualquier
+hosting estático (GitHub Pages, Netlify, etc.). Links internos relativos:
+funciona igual en la raíz o en una subcarpeta.
+
+ARCHIVOS
+--------
+  index.html · catalogo.html · admin.html
+  styles.css · app.js · catalog.js · store.js
+  config.js · products-data.js · tour.js · tour.css · _headers
+========================================================================
