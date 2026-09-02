@@ -19,9 +19,9 @@
    =========================================================================== */
 window.DVStore = (function () {
   "use strict";
-  var PKEY = "dv_products_v1";
-  var CKEY = "dv_cart_v1";
-  var PING = "dv_ping";
+  var PKEY = "gb_products_v1";
+  var CKEY = "gb_cart_v1";
+  var PING = "gb_ping";
   var COLS = ["id", "n", "d", "p", "img", "emoji", "cat", "unit", "active", "order"];
   var WANUM = (window.DV_BRAND && window.DV_BRAND.whatsapp) || "5491100000000";
 
